@@ -1,0 +1,45 @@
+*, p, h1, h2, h3, h4{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-color: rgb(229, 233, 197);
+}
+
+
+header{
+    background-color: rgb(1, 107, 97);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.custom-container{
+    width: 90%;
+    margin: 0 auto;
+}
+
+.main-section{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.main-section h2{
+    text-align: center;
+    margin: 15px 0;
+}
+
+/*checkout summary section*/
+.product{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* width: 50%; */
+    background-color: rgb(158, 207, 212);
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 6px;
+}
