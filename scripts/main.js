@@ -1,19 +1,20 @@
-const productsListed = [
+let productsListed = [
   {
     productName: "Headphones",
     price: 10,
+    quantity: 2,
   },
   {
     productName: "Microwave",
     price: 70,
+    quantity: 1,
   },
   {
     productName: "Mini-Fridge",
     price: 100,
+    quantity: 1,
   },
 ];
-
-
 
 // progress
 let svgString = `<svg
@@ -62,16 +63,131 @@ function updateProgress(currentStepNumber) {
 //summary
 let itemsSection = document.getElementById("items");
 
-for (let product of productsListed) {
-  let p = document.createElement("div");
-  p.innerHTML = `<h4>${product.productName}</h4><p>$${product.price}</p><button type="button" class="remove-btn">Remove</button>`;
-  p.className = "product";
-  itemsSection.appendChild(p);
+function purchaseSummary() {
+  itemsSection.innerHTML = `<div class="product-header row">
+              <p class="col-3">Product</p>
+              <p class="col-3">Price</p>
+              <p class="col-3">Quantity</p>
+              <p class="col-3"></p>
+            </div>`;
+  for (let product of productsListed) {
+    let p = document.createElement("div");
+    p.innerHTML = `<h4 class="col-3">${product.productName}</h4>
+    <p class="col-3 product-price">$${(
+      product.price * product.quantity
+    ).toFixed(2)}</p><div class="d-flex align-items-center col-3">
+      <button type="button" class="quantity-btn reduce-btn">-</button>
+      <p class="product-quantity">${product.quantity}</p>
+      <button type="button" class="quantity-btn add-btn">+</button>
+    </div>
+    <div class="col-3"><button type="button" class="remove-btn ">Remove</button></div>
+ `;
+    p.className = "product";
+    p.classList.add("row");
+    itemsSection.appendChild(p);
+  }
 }
 
-let subtotal = document.getElementById("subtotal");
-subtotal.textContent =
-  "$" + productsListed.reduce((sum, a) => (sum += a.price), 0);
+purchaseSummary();
+
+function updateTotals() {
+  let subtotal = document.getElementById("subtotal");
+  subtotal.textContent =
+    "$" + productsListed.reduce((sum, a) => (sum += a.price * a.quantity), 0);
+
+  document.getElementById("total-price").textContent =
+    "$" + productsListed.reduce((sum, a) => (sum += a.price * a.quantity), 15);
+}
+
+let addBtns = document.getElementsByClassName("add-btn");
+let reduceBtns = document.getElementsByClassName("reduce-btn");
+const MAX_QUANTITY = 10;
+const MIN_QUANTITY = 1;
+
+// --- INITIAL DISABLE CHECK (Good Practice) ---
+// Disable all 'Reduce' buttons that start at 1 unit
+Array.from(reduceBtns).forEach((btn, index) => {
+    let quantityElement = document.getElementsByClassName("product-quantity")[index];
+    if (parseInt(quantityElement.textContent) === MIN_QUANTITY) {
+        btn.disabled = true;
+    }
+});
+
+// --- ADD BUTTON LOGIC ---
+Array.from(addBtns).forEach((btn, index) => {
+    btn.addEventListener("click", () => {
+        let quantityElement = document.getElementsByClassName("product-quantity")[index];
+        let priceElement = document.getElementsByClassName("product-price")[index];
+        let reduceBtn = reduceBtns[index]; // Get the corresponding reduce button
+
+        let currentQuantity = parseInt(quantityElement.textContent);
+
+        // 1. MAX CHECK: Disable the Add button if we hit the limit
+        if (currentQuantity >= MAX_QUANTITY) {
+            // Already at max, so just return
+            return; 
+        }
+
+        // --- Calculate New Quantity and Price (Your existing correct logic) ---
+        let currentPriceText = priceElement.textContent;
+        let currentTotalPrice = parseFloat(currentPriceText.slice(1));
+        let unitPrice = currentTotalPrice / currentQuantity;
+        let newQuantity = currentQuantity + 1;
+        let newTotalPrice = unitPrice * newQuantity;
+
+        // --- Update UI and Data ---
+        quantityElement.textContent = newQuantity;
+        priceElement.textContent = "$" + newTotalPrice.toFixed(2);
+        productsListed[index].quantity = newQuantity;
+        updateTotals();
+
+        // 2. DISABLE CHECK: Disable the Add button if the new quantity hits the max
+        if (newQuantity >= MAX_QUANTITY) {
+            btn.disabled = true;
+        }
+
+        // 3. ENABLE CHECK: Ensure the Reduce button is enabled (since newQuantity > 1)
+        reduceBtn.disabled = false;
+    });
+});
+
+// --- REDUCE BUTTON LOGIC ---
+Array.from(reduceBtns).forEach((btn, index) => {
+    btn.addEventListener("click", () => {
+        let quantityElement = document.getElementsByClassName("product-quantity")[index];
+        let priceElement = document.getElementsByClassName("product-price")[index];
+        let addBtn = addBtns[index]; // Get the corresponding add button
+
+        let currentQuantity = parseInt(quantityElement.textContent);
+
+        // 1. MIN CHECK: Disable the Reduce button if we are at the minimum
+        if (currentQuantity <= MIN_QUANTITY) {
+            // Already at min, so just return
+            return; 
+        }
+        
+        // --- Calculate New Quantity and Price (Your existing correct logic) ---
+        let currentPriceText = priceElement.textContent;
+        let currentTotalPrice = parseFloat(currentPriceText.slice(1));
+        let unitPrice = currentTotalPrice / currentQuantity;
+        let newQuantity = currentQuantity - 1;
+        let newTotalPrice = unitPrice * newQuantity;
+
+      
+        quantityElement.textContent = newQuantity;
+        priceElement.textContent = "$" + newTotalPrice.toFixed(2);
+        productsListed[index].quantity = newQuantity;
+        updateTotals();
+        if (newQuantity <= MIN_QUANTITY) {
+            btn.disabled = true;
+        }
+
+        // 3. ENABLE CHECK: Ensure the Add button is enabled (since newQuantity < 10)
+        addBtn.disabled = false;
+    });
+});
+
+updateTotals();
 
 // pagination
 let mainSections = document.getElementsByClassName("main-section");
@@ -89,7 +205,7 @@ const updateButtonVisibility = () => {
 
 const updateBtnLabels = () => {
   if (curSection === 0) {
-    nextBtn.innerText = "Proceed to Personal Info";
+    nextBtn.innerText = "Proceed to Personal & Contact Info";
   } else if (curSection === 1) {
     // on personal info
     nextBtn.innerText = "Proceed to Billing Address";

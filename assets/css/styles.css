@@ -1,62 +1,71 @@
-*, p, h1, h2, h3, h4{
-    padding: 0;
-    margin: 0;
+*,
+p,
+h1,
+h2,
+h3,
+h4 {
+  padding: 0;
+  margin: 0;
 }
 
-
-body{
-    background-color: rgb(222, 222, 222);
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    scroll-behavior: smooth;
+body {
+  background-color: rgb(222, 222, 222);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  scroll-behavior: smooth;
 }
-main { 
-  flex-grow: 1; 
+main {
+  flex-grow: 1;
   overflow-x: hidden;
 }
 
-p,h1,h2, h3, h4, h5, h6 {
-    font-family: "Roboto", sans-serif;
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Roboto", sans-serif;
 }
 
-button{
-    cursor: pointer;
+button {
+  cursor: pointer;
 }
 
-header{
-    background-color: rgb(1, 107, 97);
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
+header {
+  background-color: rgb(1, 107, 97);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
 }
 
-.custom-container{
-    width: 90%;
-    margin: 0 auto;
+.custom-container {
+  width: 90%;
+  margin: 0 auto;
 }
 
-.main-section{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    background-color: black;
-    padding: 3% 2%;
-    border-radius: 12px;
-    box-shadow: 2px 1px 2px gray;
-    color: white;
-    min-height: 70vh;
+.main-section {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: black;
+  padding: 3% 2%;
+  border-radius: 12px;
+  box-shadow: 2px 1px 2px gray;
+  color: white;
+  min-height: 70vh;
 }
-.main-section h2{
-    text-align: center;
-    margin: 15px 0;
+.main-section h2 {
+  text-align: center;
+  margin: 15px 0;
 }
-
 
 /* progress */
-/* From Uiverse.io by PriyanshuGupta28 */ 
+/* From Uiverse.io by PriyanshuGupta28 */
 .stepper-box {
   border-radius: 12px;
   padding: 15px 0;
@@ -81,7 +90,7 @@ header{
   margin-bottom: 0;
 }
 
-.stepper-step:last-child  {
+.stepper-step:last-child {
   border-right: none;
 }
 
@@ -187,46 +196,85 @@ header{
   border-color: #0f172a;
 }
 
-
-
-
 /*checkout summary section*/
-.product{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    min-width: 50dvw;
-    background-color: white;
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 6px;
-    color: black;
+.product-header {
+  padding: 10px;
 }
-.product h4{
-    font-size: 18px;
+.product {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 50dvw;
+  background-color: white;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 6px;
+  color: black;
 }
-.remove-btn{
-    background-color: red;
-    color: white;
-    padding: 5px 8px;
-    border: none;
-    border-radius: 6px;
+.product h4 {
+  font-size: 18px;
+}
+.summary {
+  background-color: white;
+  color: black;
+  border-radius: 6px;
+  padding: 10px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.summary strong {
+  font-size: 20px;
+}
+.quantity-btn {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-weight: bold;
+  margin: 0 5px;
+}
+.quantity-btn:hover {
+  background-color: black;
+  color: white;
+}
+.quantity-btn:disabled {
+  border: 1px solid #ccc;
+  color: #ccc;
+}
+.quantity-btn:disabled:hover{
+  border: 1px solid #ccc;
+  color: #ccc;
+}
+.remove-btn {
+  background-color: red;
+  color: white;
+  padding: 5px 15px;
+  border: 1px solid red;
+  border-radius: 6px;
+}
+.remove-btn:hover {
+  border: 1px solid red;
+  background-color: white;
+  color: black;
 }
 
 /* navigation footer */
 footer {
-  flex-shrink: 0; 
+  flex-shrink: 0;
   padding: 20px 0;
 }
-.nav-btn{
-    background-color: black;
-    color: white;
-    border: 1px solid black;
-    border-radius: 6px;
-    padding: 5px 10px;
+.nav-btn {
+  background-color: black;
+  color: white;
+  border: 1px solid black;
+  border-radius: 6px;
+  padding: 5px 10px;
 }
 
-.nav-btn:hover{
-    color: black;
-    background-color: white;
+.nav-btn:hover {
+  color: black;
+  background-color: white;
 }

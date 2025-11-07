@@ -20,59 +20,60 @@
   </head>
   <body>
     <div class="stepper-box">
-        <div class="stepper-step stepper-active">
-          <div class="stepper-circle">
-            1
-          </div>
+      <div class="stepper-step stepper-active">
+        <div class="stepper-circle">1</div>
 
-          <div class="stepper-content">
-            <div class="stepper-title">Checkout Summary</div>
-          </div>
+        <div class="stepper-content">
+          <div class="stepper-title">Checkout Summary</div>
         </div>
-
-        <div class="stepper-step stepper-pending">
-          <div class="stepper-circle">2</div>
-          <div class="stepper-content">
-            <div class="stepper-title">Personal & Contact Info</div>
-          </div>
-        </div>
-
-        <div class="stepper-step stepper-pending">
-          <div class="stepper-circle">3</div>
-
-          <div class="stepper-content">
-            <div class="stepper-title">Billing & Shipping Address</div>
-          </div>
-        </div>
-
-        <div class="stepper-step stepper-pending">
-          <div class="stepper-circle">4</div>
-
-          <div class="stepper-content">
-            <div class="stepper-title">Payment Details</div>
-          </div>
-        </div>
-
-        <div class="stepper-step stepper-pending">
-          <div class="stepper-circle">5</div>
-          <div class="stepper-content">
-            <div class="stepper-title">Review & Confirm</div>
-          </div>
-        </div>
-        
       </div>
-    <main>
-      
 
+      <div class="stepper-step stepper-pending">
+        <div class="stepper-circle">2</div>
+        <div class="stepper-content">
+          <div class="stepper-title">Personal & Contact Info</div>
+        </div>
+      </div>
+
+      <div class="stepper-step stepper-pending">
+        <div class="stepper-circle">3</div>
+
+        <div class="stepper-content">
+          <div class="stepper-title">Billing & Shipping Address</div>
+        </div>
+      </div>
+
+      <div class="stepper-step stepper-pending">
+        <div class="stepper-circle">4</div>
+
+        <div class="stepper-content">
+          <div class="stepper-title">Payment Details</div>
+        </div>
+      </div>
+
+      <div class="stepper-step stepper-pending">
+        <div class="stepper-circle">5</div>
+        <div class="stepper-content">
+          <div class="stepper-title">Review & Confirm</div>
+        </div>
+      </div>
+    </div>
+    <main>
       <section class="custom-container main-section">
         <h2>Checkout Summary</h2>
-        <div class="d-flex justify-content-evenly">
-          <div id="items"></div>
-          <div>
-            <p>Subtotal: <span id="subtotal"></span></p>
-            <p>Shipping: <span>$0</span></p>
-            <p>Tax: <span>$15</span></p>
-            <p>Total: <span id="total-price"></span></p>
+        <div class="d-flex justify-content-evenly flex-wrap">
+          <div id="items">
+            
+          </div>
+          <div class="summary">
+            <p><span>Subtotal:</span> <span id="subtotal"></span></p>
+            <p><span>Shipping:</span> <span>$0</span></p>
+            <p><span>Tax:</span> <span>$15</span></p>
+            <strong><span>Order Total:</span> <span id="total-price"></span></p>
+            <div>
+              <input type="text"/>
+              <button type="button">Apply</button>
+            </div>
           </div>
         </div>
       </section>
