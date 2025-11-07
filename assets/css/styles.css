@@ -52,7 +52,7 @@ header {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  background-color: black;
+  background-color: #849baa;
   padding: 3% 2%;
   border-radius: 12px;
   box-shadow: 2px 1px 2px gray;
@@ -82,13 +82,13 @@ header {
   margin-bottom: 32px;
   position: relative;
   min-width: 30%;
-  border-right: 1px solid black;
+  border-right: 1px solid #435274;
   padding: 10px 0;
 }
 
-.stepper-step:last-child {
+/* .stepper-step:last-child {
   margin-bottom: 0;
-}
+} */
 
 .stepper-step:last-child {
   border-right: none;
@@ -105,14 +105,18 @@ header {
   z-index: 2;
 }
 
+.stepper-active{
+    background-color: 	#cba69e;
+}
+
 .stepper-completed .stepper-circle {
-  background-color: #0f172a;
+  background-color: #435274;
   color: white;
 }
 
 .stepper-active .stepper-circle {
-  border: 2px solid #0f172a;
-  color: #0f172a;
+  border: 2px solid #435274;
+  color: #435274;
   background-color: white;
 }
 
@@ -133,11 +137,11 @@ header {
 }
 
 .stepper-completed .stepper-title {
-  color: #0f172a;
+  color: #435274;
 }
 
 .stepper-active .stepper-title {
-  color: #0f172a;
+  color: #435274;
 }
 
 .stepper-pending .stepper-title {
@@ -227,17 +231,34 @@ header {
 .summary strong {
   font-size: 20px;
 }
+#total-price{
+  color: #435274;
+}
+.summary input{
+  border-radius: 6px;
+  outline: #435274;
+  border: 1px solid #435274;
+}
+.summary button{
+  border-radius: 6px;
+  background-color: #435274;
+  color: white;
+  border: none;
+  font-size: 16px;
+  padding: 5px 10px;
+  margin-left: 5px;
+}
 .quantity-btn {
   background-color: white;
   color: black;
-  border: 1px solid black;
+  border: 1px solid #849baa;
   padding: 3px 10px;
   border-radius: 6px;
   font-weight: bold;
   margin: 0 5px;
 }
 .quantity-btn:hover {
-  background-color: black;
+  background-color: #849baa;
   color: white;
 }
 .quantity-btn:disabled {
@@ -267,9 +288,9 @@ footer {
   padding: 20px 0;
 }
 .nav-btn {
-  background-color: black;
+  background-color: #849baa;
   color: white;
-  border: 1px solid black;
+  border: 1px solid #849baa;
   border-radius: 6px;
   padding: 5px 10px;
 }
