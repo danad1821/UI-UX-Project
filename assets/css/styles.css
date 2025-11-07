@@ -154,6 +154,9 @@ button {
 /*checkout summary section*/
 .product-header {
   padding: 10px;
+  background-color: white;
+  margin: 5px 0;
+  border-radius: 6px;
 }
 .product-header >p {
   font-size: 20px;
@@ -226,10 +229,14 @@ button {
 .quantity-btn:disabled {
   border: 1px solid #ccc;
   color: #ccc;
+  cursor: not-allowed;
+  background-color: white; /* Ensure disabled state background is white */
 }
 .quantity-btn:disabled:hover{
+  /* Requirement 4: Don't change color on hover of a disabled button */
   border: 1px solid #ccc;
   color: #ccc;
+  background-color: white;
 }
 .remove-btn {
   background-color: red;
@@ -237,11 +244,20 @@ button {
   padding: 5px 15px;
   border: 1px solid red;
   border-radius: 6px;
+  display: flex; /* For centering the icon */
+  align-items: center;
+  justify-content: center;
+}
+.remove-btn svg {
+  fill: white;
 }
 .remove-btn:hover {
   border: 1px solid red;
   background-color: white;
   color: black;
+}
+.remove-btn:hover svg {
+  fill: red;
 }
 
 
@@ -253,10 +269,36 @@ button {
   font-size: 15px;
 }
 
-.dropdown .btn{
-  background-color: white;
-  color: gray;
+
+/* Review Section Styling */
+.review-box {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
 }
+.review-box h4 {
+    border-bottom: 2px solid #eee;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+.review-box h5 {
+    margin-top: 10px;
+    font-size: 16px;
+}
+.review-box p {
+    margin: 3px 0;
+    font-size: 15px;
+}
+.product-list-review {
+    margin-bottom: 10px;
+    padding-left: 10px;
+    border-left: 3px solid #cb9a91;
+}
+.w-45 {
+    width: 45%;
+}
+
 
 /* navigation footer */
 footer {
@@ -264,10 +306,10 @@ footer {
   padding: 20px 0;
 }
 .nav-btn {
-  background-color: #caa39c;
-  color: #435274;
+  background-color: #cb9a91;
+  color: white;
   font-weight: bold;
-  border: 1px solid #caa39c;
+  border: 1px solid #cb9a91;
   border-radius: 6px;
   padding: 5px 10px;
 }
