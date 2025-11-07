@@ -16,6 +16,9 @@ let productsListed = [
   },
 ];
 
+let nextBtn = document.getElementById("next-btn");
+let prevBtn = document.getElementById("prev-btn");
+
 // progress
 let svgString = `<svg
     viewBox="0 0 16 16"
@@ -189,11 +192,68 @@ Array.from(reduceBtns).forEach((btn, index) => {
 
 updateTotals();
 
+
+// personl info
+
+function setError(elem, msg){
+  elem.textContent = msg;
+  setTimeout(()=>{
+    elem.textContent = "";
+  }, 5000)
+}
+
+let personalInfo = document.getElementsByClassName("personal-data");
+
+function validatePersonalData(){
+  isValid = true
+
+  //name
+  if( !(/^[a-zA-Z\s]*$/.test(personalInfo[0].value))){
+    setError(document.getElementsByClassName("personal-error")[0], "Name must not contain special characters or numbers.");
+    isValid = false;
+  } else if(!personalInfo[0].value){
+    setError(document.getElementsByClassName("personal-error")[0], "Name must not be empty.");
+    isValid = false;
+  } else if (!(personalInfo[0].value.includes(" "))){
+    setError(document.getElementsByClassName("personal-error")[0], "Full Name must be entered.");
+    isValid = false;
+  }
+  //email
+  if(!(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(personalInfo[1].value))){
+    setError(document.getElementsByClassName("personal-error")[1], "Email is invalid.");
+    isValid = false;
+  }
+
+  //phone
+  if(!(/^\+?\d{8,15}$/.test(personalInfo[2].value.trim().replace(/[^\d+]/g, '')))){
+    setError(document.getElementsByClassName("personal-error")[2], "Phone Number is invalid.");
+    isValid = false;
+  }
+
+  return isValid;
+}
+
+
+
+// billing and shipping
+let billingAndShipping = document.getElementById("sameAddress");
+let modes = document.getElementsByClassName("billing-shipping-contents");
+
+billingAndShipping.addEventListener("change", ()=>{
+  if(billingAndShipping.checked){
+    console.log(billingAndShipping.checked)
+    modes[0].classList.remove("d-none");
+    modes[1].classList.add("d-none");
+  }else{
+    modes[0].classList.add("d-none");
+    modes[1].classList.remove("d-none");
+  }
+})
+
 // pagination
 let mainSections = document.getElementsByClassName("main-section");
 let curSection = 0;
-let nextBtn = document.getElementById("next-btn");
-let prevBtn = document.getElementById("prev-btn");
+
 
 const updateButtonVisibility = () => {
   if (curSection > 0) {
@@ -220,10 +280,22 @@ const updateBtnLabels = () => {
   }
 };
 
+const validateData = ()=>{
+  isValid = true;
+  if(curSection === 1){
+    isValid = validatePersonalData();
+  }
+
+  return isValid;
+}
+
 updateButtonVisibility();
 updateBtnLabels();
 
 nextBtn.onclick = () => {
+  if(!validateData()){
+    return;
+  }
   if (curSection < mainSections.length) {
     mainSections[curSection].classList.add("d-none");
     curSection = curSection + 1;

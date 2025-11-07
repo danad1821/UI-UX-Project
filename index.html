@@ -62,16 +62,16 @@
       <section class="custom-container main-section">
         <h2>Checkout Summary</h2>
         <div class="d-flex justify-content-evenly flex-wrap">
-          <div id="items">
-            
-          </div>
+          <div id="items"></div>
           <div class="summary">
             <p><span>Subtotal:</span> <span id="subtotal"></span></p>
             <p><span>Shipping:</span> <span>$0</span></p>
             <p><span>Tax:</span> <span>$15</span></p>
-            <strong><span>Order Total:</span> <span id="total-price"></span></strong>
+            <strong
+              ><span>Order Total:</span> <span id="total-price"></span
+            ></strong>
             <div class="d-flex align-items-center">
-              <input type="text" placeholder="Promo Code / Gift Card"/>
+              <input type="text" placeholder="Promo Code / Gift Card" />
               <button type="button">Apply</button>
             </div>
           </div>
@@ -86,70 +86,227 @@
             <label for="full-name" class="form-label">Full Name</label>
             <input
               type="text"
-              class="form-control"
+              class="form-control personal-data"
               id="full-name"
               placeholder="e.g. John Doe"
             />
+            <p class="text-danger personal-error"></p>
           </div>
           <div class="mb-3 w-50">
             <label for="email" class="form-label">Email</label>
             <input
               type="email"
-              class="form-control"
+              class="form-control personal-data"
               id="email"
               placeholder="name@example.com"
             />
+            <p class="text-danger personal-error"></p>
           </div>
           <div class="mb-3 w-50">
             <label for="phone-number" class="form-label">Phone Number</label>
             <input
               type="text"
-              class="form-control"
+              class="form-control personal-data"
               id="phone-number"
               placeholder="70 000 000"
             />
+            <p class="text-danger personal-error"></p>
           </div>
         </div>
       </section>
-      <section class="custom-container main-section d-none">
+      <section class="custom-container main-section d-none d-flex flex-column align-items-center">
         <h2>Billing & Shipping Address</h2>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="sameAddress"
+          />
+          <label class="form-check-label" for="sameAddress">
+            Billing & Shipping addresses are the same
+          </label>
+        </div>
         <div
-          class="d-flex flex-column justity-content-center align-items-center"
-        >
-          <div class="mb-3 w-50">
-            <label for="street-address" class="form-label"
-              >Street Address</label
+              class="billing-shipping-contents d-none flex-column justity-content-center align-items-center"
             >
-            <input
-              type="text"
-              class="form-control"
-              id="street-address"
-              placeholder=""
-            />
-          </div>
-          <div class="mb-3 w-50">
-            <label for="city" class="form-label">City</label>
-            <input type="text" class="form-control" id="city" placeholder="" />
-          </div>
-          <div class="d-flex align-items-center w-50">
-            <div class="mb-3 w-50">
-              <label for="zip-code" class="form-label">Zip Code</label>
-              <input
-                type="text"
-                class="form-control"
-                id="zip-code"
-                placeholder=""
-              />
+              <div class="mb-3 w-100">
+                <label for="street-address" class="form-label"
+                  >Street Address</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="street-address"
+                  placeholder="Street Address Line (Apt, Suite, Bldg - Optional)"
+                />
+              </div>
+              <div class="mb-3 w-100">
+                <label for="city" class="form-label">City</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="city"
+                  placeholder="e.g. Paris"
+                />
+              </div>
+              <div class="d-flex align-items-center gap-2">
+                <div class="mb-3">
+                  <label for="zip-code" class="form-label">Zip Code</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="zip-code"
+                    placeholder="000000"
+                  />
+                </div>
+                <div>
+                  <label for="country" class="form-label">Country</label>
+                  <div class="dropdown mb-3">
+                    <a
+                      class="btn dropdown-toggle"
+                      href="#"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      Select a country
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Lebanon</a></li>
+                      <li>
+                        <a class="dropdown-item" href="#">France</a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">USA</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="mb-3 w-50">
-              <label for="country" class="form-label">Country</label>
-              <input
-                type="text"
-                class="form-control"
-                id="country"
-                placeholder=""
-              />
+          </div>
+        <div class="d-flex justify-content-around w-100 mt-3 billing-shipping-contents ">
+          
+          <div>
+            <h3>Billing Address</h3>
+            <div
+              class="d-flex flex-column justity-content-center align-items-center"
+            >
+              <div class="mb-3 w-100">
+                <label for="street-address" class="form-label"
+                  >Street Address</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="street-address"
+                  placeholder="Street Address Line (Apt, Suite, Bldg - Optional)"
+                />
+              </div>
+              <div class="mb-3 w-100">
+                <label for="city" class="form-label">City</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="city"
+                  placeholder="e.g. Paris"
+                />
+              </div>
+              <div class="d-flex align-items-center gap-2">
+                <div class="mb-3">
+                  <label for="zip-code" class="form-label">Zip Code</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="zip-code"
+                    placeholder="000000"
+                  />
+                </div>
+                <div>
+                  <label for="country" class="form-label">Country</label>
+                  <div class="dropdown mb-3">
+                    <a
+                      class="btn dropdown-toggle"
+                      href="#"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      Select a country
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Lebanon</a></li>
+                      <li>
+                        <a class="dropdown-item" href="#">France</a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">USA</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
+          <div>
+            <h3>Shipping Address</h3>
+            <div
+              class="d-flex flex-column justity-content-center align-items-center"
+            >
+              <div class="mb-3 w-100">
+                <label for="street-address" class="form-label"
+                  >Street Address</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="street-address"
+                  placeholder="Street Address Line (Apt, Suite, Bldg - Optional)"
+                />
+              </div>
+              <div class="mb-3 w-100">
+                <label for="city" class="form-label">City</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="city"
+                  placeholder="e.g. Paris"
+                />
+              </div>
+              <div class="d-flex align-items-center gap-2">
+                <div class="mb-3">
+                  <label for="zip-code" class="form-label">Zip Code</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="zip-code"
+                    placeholder="000000"
+                  />
+                </div>
+                <div>
+                  <label for="country" class="form-label">Country</label>
+                  <div class="dropdown mb-3">
+                    <a
+                      class="btn dropdown-toggle"
+                      href="#"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      Select a country
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Lebanon</a></li>
+                      <li>
+                        <a class="dropdown-item" href="#">France</a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">USA</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
           </div>
         </div>
       </section>
@@ -166,10 +323,10 @@
               type="text"
               class="form-control"
               id="card-information"
-              placeholder=""
+              placeholder="XXXX XXXX XXXX XXXX"
             />
           </div>
-          <div class="d-flex align-items-center w-50">
+          <div class="d-flex align-items-center w-50 gap-2">
             <div class="mb-3 w-50 mr-2">
               <label for="expiration-date" class="form-label"
                 >Expiration Date</label
@@ -178,7 +335,7 @@
                 type="text"
                 class="form-control"
                 id="expiration-date"
-                placeholder=""
+                placeholder="MM-YYYY"
               />
             </div>
             <div class="mb-3 w-50 ml-2">
@@ -187,7 +344,7 @@
                 type="text"
                 class="form-control"
                 id="security-code"
-                placeholder=""
+                placeholder="***"
               />
             </div>
           </div>
