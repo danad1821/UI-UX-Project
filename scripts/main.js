@@ -483,7 +483,7 @@ function populateReviewSection() {
     // 1. Checkout Summary
     let summaryHtml = `
         <div class="review-box">
-            <h4>🛒 Checkout Summary</h4>
+            <h4>Checkout Summary</h4>
             <div class="product-list-review">
     `;
     productsListed.forEach(p => {
@@ -518,7 +518,7 @@ function populateReviewSection() {
     
     reviewContent.innerHTML += `
         <div class="review-box">
-            <h4>👤 Personal & Contact Info</h4>
+            <h4>Personal & Contact Info</h4>
             <p><strong>Full Name:</strong> ${fullName}</p>
             <p><strong>Email:</strong> ${email}</p>
             <p><strong>Phone:</strong> ${phone}</p>
@@ -528,7 +528,7 @@ function populateReviewSection() {
     // 3. Billing & Shipping Address
     let addressHtml = `
         <div class="review-box">
-            <h4>🏠 Address Details</h4>
+            <h4>Address Details</h4>
     `;
 
     if (billingAndShipping.checked) {
@@ -583,7 +583,7 @@ function populateReviewSection() {
     
     reviewContent.innerHTML += `
         <div class="review-box">
-            <h4>💳 Payment Details</h4>
+            <h4>💳Payment Details</h4>
             <p><strong>Card Number:</strong> ${obscuredCard}</p>
         </div>
     `;
