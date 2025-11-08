@@ -65,25 +65,32 @@
           <div id="items"></div>
           <div class="summary">
             <p><span>Subtotal:</span> <span id="subtotal"></span></p>
-            <p id="discount-row" class="d-none"><span>Discount (75%):</span> <span id="discount-value"></span></p>
+            <p id="discount-row" class="d-none">
+              <span>Discount (75%):</span> <span id="discount-value"></span>
+            </p>
             <p><span>Shipping:</span> <span>$0</span></p>
             <p><span>Tax:</span> <span>$15</span></p>
             <strong
               ><span>Order Total:</span> <span id="total-price"></span
             ></strong>
             <div class="d-flex align-items-center">
-              <input type="text" placeholder="Promo Code / Gift Card" id="promo-code-input" />
-              <button type="button" id="apply-promo-btn">Apply</button>
+              <input
+                type="text"
+                placeholder="Promo Code / Gift Card"
+                id="promo-code-input"
+                class="w-75"
+              />
+              <button type="button" id="apply-promo-btn" class="w-25">Apply</button>
             </div>
             <p class="text-danger" id="promo-error"></p>
           </div>
         </div>
       </section>
-      
+
       <section class="custom-container main-section d-none">
         <h2>Personal & Contact Info</h2>
         <div
-          class="d-flex flex-column justity-content-center align-items-center w-lg-50 w-md-75 w-100 mx-auto"
+          class="d-flex flex-column justity-content-center align-items-center mx-auto form-content"
         >
           <div class="mb-3 w-100">
             <label for="full-name" class="form-label">Full Name</label>
@@ -117,72 +124,76 @@
           </div>
         </div>
       </section>
-      
-      <section class="custom-container main-section d-none d-flex flex-column align-items-center">
+
+      <section
+        class="custom-container main-section d-none d-flex flex-column align-items-center"
+      >
         <h2>Billing & Shipping Address</h2>
         <div class="form-check">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="sameAddress"
-          />
+          <input class="form-check-input" type="checkbox" id="sameAddress" />
           <label class="form-check-label" for="sameAddress">
             Billing & Shipping addresses are the same
           </label>
         </div>
-        
+
         <div
-            class="billing-shipping-contents d-none flex-column justity-content-center align-items-center w-lg-50 w-md-75 w-100 mx-auto"
-          >
-            <div class="mb-3 w-100">
-              <label for="street-address-combined" class="form-label"
-                >Street Address</label
+          class="form-content billing-shipping-contents d-none flex-column justity-content-center align-items-center mx-auto"
+        >
+          <div class="mb-3 w-100">
+            <label for="street-address-combined" class="form-label"
+              >Street Address</label
+            >
+            <input
+              type="text"
+              class="form-control combined-data"
+              id="street-address-combined"
+              placeholder="Street Address Line (Apt, Suite, Bldg - Optional)"
+            />
+            <p class="text-danger combined-error"></p>
+          </div>
+          <div class="mb-3 w-100">
+            <label for="city-combined" class="form-label">City</label>
+            <input
+              type="text"
+              class="form-control combined-data"
+              id="city-combined"
+              placeholder="e.g. Paris"
+            />
+            <p class="text-danger combined-error"></p>
+          </div>
+          <div class="d-flex align-items-center gap-2 w-100">
+            <div class="mb-3 w-50">
+              <label for="zip-code-combined" class="form-label">Zip Code</label>
+              <input
+                type="text"
+                class="form-control combined-data"
+                id="zip-code-combined"
+                placeholder="000000"
+              />
+              <p class="text-danger combined-error"></p>
+            </div>
+            <div class="d-flex flex-column w-50">
+              <label for="country-combined" class="form-label">Country</label>
+              <select
+                name="country-combined"
+                id="country-combined"
+                class="mb-3 form-control dropdown-toggle combined-data"
               >
-              <input
-                type="text"
-                class="form-control combined-data"
-                id="street-address-combined"
-                placeholder="Street Address Line (Apt, Suite, Bldg - Optional)"
-              />
+                <option value="no" disabled selected>Select a country</option>
+                <option value="lb">Lebanon</option>
+                <option value="fr">France</option>
+                <option value="us">USA</option>
+              </select>
               <p class="text-danger combined-error"></p>
-            </div>
-            <div class="mb-3 w-100">
-              <label for="city-combined" class="form-label">City</label>
-              <input
-                type="text"
-                class="form-control combined-data"
-                id="city-combined"
-                placeholder="e.g. Paris"
-              />
-              <p class="text-danger combined-error"></p>
-            </div>
-            <div class="d-flex align-items-center gap-2 w-100">
-              <div class="mb-3 w-50">
-                <label for="zip-code-combined" class="form-label">Zip Code</label>
-                <input
-                  type="text"
-                  class="form-control combined-data"
-                  id="zip-code-combined"
-                  placeholder="000000"
-                />
-                <p class="text-danger combined-error"></p>
-              </div>
-              <div class="d-flex flex-column w-50">
-                <label for="country-combined" class="form-label">Country</label>
-                <select name="country-combined" id="country-combined" class="mb-3 form-control dropdown-toggle combined-data">
-                  <option value="no" disabled selected>Select a country</option>
-                  <option value="lb">Lebanon</option>
-                  <option value="fr">France</option>
-                  <option value="us">USA</option>
-                </select>
-                <p class="text-danger combined-error"></p>
-              </div>
             </div>
           </div>
-        
-        <div class="d-flex justify-content-around w-100 mt-3 billing-shipping-contents flex-wrap">
-          
-          <div class="w-100 w-md-50 w-lg-45"> <h3>Billing Address</h3>
+        </div>
+
+        <div
+          class="d-flex justify-content-around w-100 mt-3 billing-shipping-contents flex-wrap gap-2"
+        >
+          <div class="form-content">
+            <h3 class="mb-2">Billing Address</h3>
             <div
               class="d-flex flex-column justity-content-center align-items-center"
             >
@@ -210,7 +221,9 @@
               </div>
               <div class="d-flex align-items-center gap-2 w-100">
                 <div class="mb-3 w-50">
-                  <label for="zip-code-billing" class="form-label">Zip Code</label>
+                  <label for="zip-code-billing" class="form-label"
+                    >Zip Code</label
+                  >
                   <input
                     type="text"
                     class="form-control billing-data"
@@ -221,8 +234,14 @@
                 </div>
                 <div class="d-flex flex-column w-50">
                   <label for="billingCountry" class="form-label">Country</label>
-                  <select name="country" id="billingCountry" class="mb-3 form-control dropdown-toggle billing-data">
-                    <option value="no" selected disabled>Select a country</option>
+                  <select
+                    name="country"
+                    id="billingCountry"
+                    class="mb-3 form-control dropdown-toggle billing-data"
+                  >
+                    <option value="no" selected disabled>
+                      Select a country
+                    </option>
                     <option value="lb">Lebanon</option>
                     <option value="fr">France</option>
                     <option value="us">USA</option>
@@ -232,7 +251,8 @@
               </div>
             </div>
           </div>
-          <div class="w-100 w-md-50 w-lg-45 mt-3 mt-md-0"> <h3>Shipping Address</h3>
+          <div class="form-content mt-3 mt-md-0">
+            <h3 class="mb-2">Shipping Address</h3>
             <div
               class="d-flex flex-column justity-content-center align-items-center"
             >
@@ -260,7 +280,9 @@
               </div>
               <div class="d-flex align-items-center gap-2 w-100">
                 <div class="mb-3 w-50">
-                  <label for="zip-code-shipping" class="form-label">Zip Code</label>
+                  <label for="zip-code-shipping" class="form-label"
+                    >Zip Code</label
+                  >
                   <input
                     type="text"
                     class="form-control shipping-data"
@@ -269,11 +291,19 @@
                   />
                   <p class="text-danger shipping-error"></p>
                 </div>
-                
-                  <div class="d-flex flex-column w-50">
-                  <label for="shippingCountry" class="form-label">Country</label>
-                  <select name="country" id="shippingCountry" class="mb-3 form-control dropdown-toggle shipping-data">
-                    <option value="no" selected disabled>Select a country</option>
+
+                <div class="d-flex flex-column w-50">
+                  <label for="shippingCountry" class="form-label"
+                    >Country</label
+                  >
+                  <select
+                    name="country"
+                    id="shippingCountry"
+                    class="mb-3 form-control dropdown-toggle shipping-data"
+                  >
+                    <option value="no" selected disabled>
+                      Select a country
+                    </option>
                     <option value="lb">Lebanon</option>
                     <option value="fr">France</option>
                     <option value="us">USA</option>
@@ -285,16 +315,14 @@
           </div>
         </div>
       </section>
-      
+
       <section class="custom-container main-section d-none">
         <h2>Payment Details</h2>
         <div
-          class="d-flex flex-column justity-content-center align-items-center w-lg-50 w-md-75 w-100 mx-auto"
+          class="d-flex flex-column justity-content-center align-items-center form-content mx-auto"
         >
           <div class="mb-3 w-100">
-            <label for="card-information" class="form-label"
-              >Card Number</label
-            >
+            <label for="card-information" class="form-label">Card Number</label>
             <input
               type="password"
               class="form-control"
@@ -333,14 +361,12 @@
           </div>
         </div>
       </section>
-      
+
       <section class="custom-container main-section d-none">
         <h2>Review & Confirm</h2>
-        <div id="review-content" class="d-flex flex-column gap-3">
-          
-        </div>
+        <div id="review-content" class="d-flex flex-column gap-1"></div>
       </section>
-      
+
       <section class="custom-container main-section d-none">
         <h2 id="confimationResult"></h2>
       </section>

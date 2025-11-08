@@ -267,6 +267,9 @@ button {
 .form-control{
   font-size: 15px;
 }
+.form-content{
+  width: 50%;
+}
 
 
 /* Review Section Styling */
@@ -324,7 +327,9 @@ footer {
   .product, .product-header, .summary{
     width: 75dvw;
   }
-
+  .form-content{
+    width: 70%;
+  }
  
 }
 
@@ -341,8 +346,11 @@ footer {
   .product{
     display: flex;
     flex-wrap: wrap;
-    gap: 5px;
+    gap: 25%;
     justify-content: flex-start;
     align-items: flex-start;
+  }
+ .form-content{
+    width: 100%;
   }
 }
