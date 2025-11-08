@@ -3,7 +3,7 @@
 Make sure you have Git installed
 * Step 2:
 ```bash
-git clone 
+git clone https://github.com/danad1821/UI-UX-Project.git
 ```
 * Step 3:
 Open the cloned folder is VS code.

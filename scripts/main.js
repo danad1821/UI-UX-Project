@@ -422,9 +422,10 @@ function validatePaymentData() {
 // Card number formatting
 cardNumber.addEventListener('input', function(event) {
     let value = event.target.value.replace(/\D/g, ''); // Remove non-digits
-    
+    value.replace(/(\d{4}\s){3}/, 'XXXX XXXX XXXX ');
     // Limit to 16 digits
     if (value.length > 16) {
+        
         value = value.substring(0, 16);
     }
 
@@ -579,6 +580,7 @@ function populateReviewSection() {
 
     // 4. Payment Details
     // Card number and CVV are validated as only digits, so we can display them safely
+    // This uses the current formatted value from the input and replaces all but the last 4 digits.
     const obscuredCard = cardNumber.value.replace(/(\d{4}\s){3}/, 'XXXX XXXX XXXX ');
     
     reviewContent.innerHTML += `
@@ -593,17 +595,32 @@ function populateReviewSection() {
 let mainSections = document.getElementsByClassName("main-section");
 let curSection = 0; // 0-indexed: 0-Checkout, 1-Personal, 2-Address, 3-Payment, 4-Review, 5-Confirmation
 
+function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+let randomNumber = getRandomIntInclusive(0,1);
+
 const updateButtonVisibility = () => {
+  // Always handle prevBtn visibility based on current section
   if (curSection > 0) {
-    prevBtn.classList.remove("d-none"); // SHOW
+    prevBtn.classList.remove("d-none"); // SHOW on steps 1-4 (index 1-4)
   } else {
-    prevBtn.classList.add("d-none"); // HIDE
+    prevBtn.classList.add("d-none"); // HIDE on step 0 (index 0)
   }
   
-  if (curSection === mainSections.length - 1) {
-    nextBtn.classList.add("d-none"); // HIDE on final confirmation page
+  if (curSection === mainSections.length - 1) { // Final confirmation page (index 5)
+    nextBtn.classList.add("d-none"); // HIDE next button on confirmation page
+    if(randomNumber === 0){ // If FAIL (0) - requirement 2
+      prevBtn.classList.remove("d-none"); // SHOW back button (to allow retry/review)
+    }
+    else{ // If SUCCESS (1) - requirement 2
+      prevBtn.classList.add("d-none"); // HIDE back button
+    }
   } else {
-    nextBtn.classList.remove("d-none");
+    nextBtn.classList.remove("d-none"); // SHOW next button on all other pages
   }
 };
 
@@ -652,9 +669,16 @@ nextBtn.onclick = () => {
     return;
   }
   
+  // Before moving to the Review section, populate it
+  if (curSection === 3) {
+      populateReviewSection();
+  }
+
   // Logic for the final step (Review -> Confirmation)
   if (curSection === mainSections.length - 2) { 
-      // If we are on the Review step (index 4)
+      // Generate random result for confirmation (0=Fail, 1=Success)
+      randomNumber = getRandomIntInclusive(0,1); 
+      
       const orderTotal = document.getElementById("total-price").textContent;
       const resultHeader = document.getElementById("confimationResult");
       
@@ -663,16 +687,18 @@ nextBtn.onclick = () => {
       curSection = curSection + 1;
       mainSections[curSection].classList.remove("d-none");
       
-      resultHeader.textContent = `✅ Order Confirmed! Thank you for your purchase!`;
-      updateButtonVisibility();
+      if(randomNumber === 1){
+        resultHeader.textContent = `✅ Order Confirmed! Thank you for your purchase!`;
+      }
+      else{
+        resultHeader.textContent = `Something went wrong! Please try again!`;
+      }
+      
+      updateButtonVisibility(); // Update visibility based on randomNumber
       updateProgress(curSection + 1);
       return;
   }
 
-  // Before moving to the Review section, populate it
-  if (curSection === 3) {
-      populateReviewSection();
-  }
   
   if (curSection < mainSections.length - 1) { // Stop before the last confirmation section
     mainSections[curSection].classList.add("d-none");
