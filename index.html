@@ -80,7 +80,9 @@
                 id="promo-code-input"
                 class="w-75"
               />
-              <button type="button" id="apply-promo-btn" class="w-25">Apply</button>
+              <button type="button" id="apply-promo-btn" class="w-25">
+                Apply
+              </button>
             </div>
             <p class="text-danger" id="promo-error"></p>
           </div>
@@ -366,8 +368,38 @@
         <h2>Review & Confirm</h2>
         <div id="review-content" class="d-flex flex-column gap-1"></div>
       </section>
-
-      <section class="custom-container main-section d-none">
+      <section
+        class="custom-container main-section d-none justify-content-center align-items-center"
+      >
+        <!-- From Uiverse.io by SelfMadeSystem -->
+        <svg
+          class="loader"
+          viewBox="0 0 384 384"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+            class="active"
+            pathLength="360"
+            fill="transparent"
+            stroke-width="32"
+            cx="192"
+            cy="192"
+            r="176"
+          ></circle>
+          <circle
+            class="track"
+            pathLength="360"
+            fill="transparent"
+            stroke-width="32"
+            cx="192"
+            cy="192"
+            r="176"
+          ></circle>
+        </svg>
+      </section>
+      <section
+        class="custom-container main-section d-none justify-content-center align-items-center"
+      >
         <h2 id="confimationResult"></h2>
       </section>
     </main>
@@ -376,7 +408,7 @@
       <div></div>
       <button id="next-btn" class="nav-btn">Next</button>
     </footer>
-    <script src="scripts/main.js"></script>
+    <script src="assets/scripts/main.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
