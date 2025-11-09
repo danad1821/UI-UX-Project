@@ -6,6 +6,7 @@ h3,
 h4 {
   padding: 0;
   margin: 0;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
@@ -28,7 +29,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 button {
@@ -218,7 +219,6 @@ button {
   border: 2px solid #849baa;
   padding: 3px 10px;
   border-radius: 6px;
-  font-weight: bold;
   margin: 0 5px;
 }
 .quantity-btn:hover {
@@ -424,7 +424,6 @@ footer {
 .nav-btn {
   background-color: #cb9a91;
   color: white;
-  font-weight: bold;
   border: 1px solid #cb9a91;
   border-radius: 6px;
   padding: 5px 10px;
